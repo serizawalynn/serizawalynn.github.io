@@ -70,8 +70,11 @@ This page will be split into two parts: my professional experience and what I am
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://serizawalynn.github.io/python/</guid>
-      <description>Hello! This is where my projects go </description>
+      <description>Hello! This is where my projects go Project 1
+Project 2</description>
       <content>&lt;h1 id=&#34;hello-this-is-where-my-projects-go&#34;&gt;Hello! This is where my projects go&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://serizawalynn.github.io/about/&#34;&gt;Project 1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Project 2&lt;/p&gt;
 </content>
     </item>
     
