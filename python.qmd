@@ -1,0 +1,6 @@
+---
+title: "Python Projects"
+---
+Here are my Python projects:
+
+[Date-a-scientist](python\date-a-scientist\date-a-scientist.qmd)

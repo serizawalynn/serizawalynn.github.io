@@ -1,0 +1,4 @@
+---
+title: "SQL-Related Projects"
+---
+[HackerRank SQL (Basic) Certificate](https://www.hackerrank.com/certificates/5e1ed3a92155)

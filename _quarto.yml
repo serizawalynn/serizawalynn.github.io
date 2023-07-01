@@ -1,0 +1,36 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Lynn Serizawa"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: About
+      - href: python.qmd
+        text: Python Projects
+      - href: matlab.qmd
+        text: MATLAB Code
+      - href: sql.qmd
+        text: SQL-Related Projects
+      - href: julia.qmd
+        text: Julia Code
+      - href: tableau.qmd
+        text: Tableau Visualizations
+      - href: resume.qmd
+        text: Resume
+      - href: writing.qmd
+        text: Articles/Writing
+    search: true
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+

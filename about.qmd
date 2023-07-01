@@ -1,0 +1,11 @@
+---
+title: "About"
+image: profilepic.jpg
+about:
+    template: trestles
+---
+
+Hey, my name is Lynn, and I am currently a research data analyst with the Immune Tolerance Network located in University of California, San Francisco. 
+
+
+Feel free to contact me through [LinkedIn](https://www.linkedin.com/in/lynn-serizawa/)!
