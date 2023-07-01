@@ -1,0 +1,10 @@
+---
+title: Ballistics Calculator
+---
+Summary:
+
+In this project, I created a script that calculates and draws the path a projectile takes. It takes into account variables such as the Magnus force and the Coriolis effect. Below is an example of what is produced when the script is run.
+
+![](path.png)
+
+[Click here for the GitHub repository.]
