@@ -1,0 +1,255 @@
+---
+title: Date-A-Scientist Portfolio Project
+jupyter: python3
+---
+
+This project was done through CodeAcademy's Data Scientist career path.
+
+## Examine Data
+Before anything else, I will examine the data so that we can get a good understanding of the data available to us.
+
+
+```{python}
+#Import necessary modules
+import pandas as pd
+import numpy as np
+
+#Load dataframe
+df=pd.read_csv('profiles.csv')
+
+#Get first few rows, column names, data types
+print(df.dtypes)
+df.head()
+```
+
+The goal: we can try to predict who is single based on their profile information. By being able to predict whether a user is single, OkCupid can market to such users in a different way (as opposed to people who are not single, as people already in relationships might use OkCupid or another site to make friends). 
+
+1. **Age** may be a relevant category. Some statistics show differences in the rate of being single in different age groups.
+2. **Drinks** may be relevant, as alcohol is used as a social lubricant and may be a way people use to connect. This may increase the chances of someone finding someone they like. The same goes for **drugs**.
+3. **Height** may be an indicator. There are varying preferences for height. 
+4. **Income** may be relevant as it gives the individual more freedom to do the things they want to do, which may increase the chances of them meeting someone they like because they can afford to do so.
+5. **Education** may be relevant as being in education may limit the time someone has for dating. However, one could also argue that being in a social environment with people who are roughly the same age as you may increase the probability of one finding someone they like.
+6. **Jobs** may be relevant to one's relationship status. Some people may want to date someone who they can relate to better in this context. Alternatively, one might see the professional benefits of such a relationship.
+9. **Sex** may be relevant. There are differing rates of being single based on sex. 
+
+**Status** is the target.
+
+Ok, it looks like the following are features worth considering:
+
+'''age,drinks,drugs,height,income,education,job,sex,last online,status'''
+
+Before we begin, I will modify the data so that it will be easier to graph and model. One thing I need to do is to remove all NaN values.
+
+```{python}
+feature_list=['age','drinks','drugs','height','income','education','job','sex','last_online','status']
+plotting_df=df[feature_list]
+plotting_df.dropna(how="any",inplace=True)
+```
+
+Next, I will examine each column to find data that might cause issues. Lets start with age.
+
+```{python}
+print(plotting_df.age.value_counts())
+```
+
+No issue here, lets move on to drinks.
+
+```{python}
+print(plotting_df.drinks.value_counts())
+```
+
+No problems here. Lets move on to drugs.
+
+```{python}
+print(plotting_df.drugs.value_counts())
+```
+
+Great! Lets move onto height and income:
+
+```{python}
+print(plotting_df.height.value_counts())
+print(plotting_df.income.value_counts())
+```
+
+The income value of -1 may cause issues with normalization later on. I will change them to zeros.
+
+```{python}
+plotting_df.loc[(plotting_df.income == -1),'income']=0
+print(plotting_df.income.value_counts())
+```
+
+Awesome! Lets check out education:
+
+```{python}
+print(plotting_df.education.value_counts())
+```
+
+One problem here is that some entries are not specific. For example, six people stated for their education "med school". However, this does not tell me whether they are enrolled in med school. I will count how many entries in the education column are not specific.
+
+```{python}
+spec_count=0
+unspec_count=0
+for edu in plotting_df.loc[:,'education']:
+    if 'graduated' in edu or 'working on' in edu or 'dropped out' in edu:
+        spec_count+=1
+    else:
+        unspec_count+=1
+print(unspec_count)
+print(unspec_count/(spec_count+unspec_count))
+```
+
+498 profiles have non-specific entries for the 'education' part of the profile. Removing these entries will only remove 2% of the current dataset. I will remove this data since it is a small fraction of the total dataset. 
+
+```{python}
+plotting_df.drop(plotting_df[(plotting_df.loc[:,'education']=="college/university")|
+                            (plotting_df['education']=="two-year college")|
+                             (plotting_df['education']=="high school")|
+                             (plotting_df['education']=="masters program")|
+                             (plotting_df['education']=="space camp")|
+                             (plotting_df['education']=="ph.d program")|
+                             (plotting_df['education']=="law school")|
+                             (plotting_df['education']=="med school")
+                            ].index,inplace=True)
+print(plotting_df['education'].value_counts())
+spec_count=0
+unspec_count=0
+for edu in plotting_df['education']:
+    if 'graduated' in edu or 'working on' in edu or 'dropped out' in edu:
+        spec_count+=1
+    else:
+        unspec_count+=1
+print(unspec_count)
+print(unspec_count/(spec_count+unspec_count))
+```
+
+My rationale for the education column is that being in school (i.e. enrolled) itself is enough of a differentiator because any form of schooling is a significant time commitment (assuming that the students themselves are committed). I will edit these values so that 0 is not enrolled and 1 is enrolled.
+
+```{python}
+plotting_df.loc[:,'in_edu']=plotting_df.loc[:,'education'].apply(lambda x: 0 if "graduated" in x or "dropped out" in x else 1)
+```
+
+Cool! Now I will inspect jobs.
+
+```{python}
+print(plotting_df.job.value_counts())
+```
+
+Lastly, I will examine sex and status.
+
+```{python}
+print(plotting_df['sex'].value_counts())
+print(plotting_df['status'].value_counts())
+```
+
+The unknown relationship status may not give us a lot of insight. They also represent a small fraction of our total dataset. I will remove them.
+
+```{python}
+plotting_df.loc[:,'status'].drop(plotting_df[plotting_df.loc[:,'status']=='unknown'].index,inplace=True)
+```
+
+Now, I will examine the last_online column.
+
+```{python}
+print(plotting_df['last_online'].value_counts)
+```
+
+I will alter this data so that we get the days since we last saw the person on the website. I think that this will help with getting data that is more useful for ML models because it is a statistic that shows a user's interest in the app's services. 
+
+```{python}
+from datetime import date
+plotting_df.loc[:,'last_online'] = pd.to_datetime(plotting_df.loc[:,'last_online'], format='%Y-%m-%d-%H-%M')
+plotting_df.loc[:,"last_online"]=plotting_df.loc[:,"last_online"].astype('datetime64[ns]')
+plotting_df.loc[:,"most recent"]=plotting_df.loc[:,"last_online"].sort_values(ascending=False).iloc[0]
+print(plotting_df.loc[:,"last_online"].sort_values(ascending=False))
+plotting_df.loc[:,"days since last seen"]=plotting_df.loc[:,"most recent"].astype('datetime64[ns]')-plotting_df.loc[:,"last_online"].astype('datetime64[ns]')
+print(plotting_df.loc[:,"days since last seen"].dtype)
+plotting_df.loc[:,"days since last seen"]=plotting_df.loc[:,"days since last seen"].apply(lambda x:x.days)
+print(plotting_df.loc[:,"days since last seen"].sort_values(ascending=False))
+```
+
+I will plot some scatter plots to see if there is any correlation between these features. I will update the features list.
+
+```{python}
+feature_list=['age','drinks','drugs','height','income','in_edu','job','sex','days since last seen','status']
+feature_list1=['age','drinks','drugs','height','income','in_edu','job','days since last seen','sex']
+```
+
+```{python}
+from matplotlib import pyplot as plt
+for feature in feature_list:
+    plt.scatter(plotting_df[feature],plotting_df.status,alpha=.1)
+    plt.title(feature)
+    plt.xticks(rotation=30)
+    plt.show()
+```
+
+Some of these graphs show some correlation. For example, there are single people all across the age x-axis, but more 20-40 year olds are married.
+There aren't as many people who desperately need to drink who are married (perhaps alcohol consumption can abate relationships).
+It looks like not a lot of people who do drugs often are married.
+Since these are categorical labels, I will make individual columns for each choice.
+Based on the above, I believe that it would be best to use a KNN classifier (in a future use case, it may also be useful to see what determines other relationship statuses). Before I begin, I will need to normalize the data.
+
+```{python}
+plotting_df.loc[:,"is single"]=np.where(plotting_df.loc[:,"status"]=='single',1,0)
+columns_to_change=["drinks","drugs","job","sex"]
+for column in columns_to_change:
+    value_list=pd.unique(plotting_df.loc[:,column])
+    for value in value_list:
+        new_col_name=column+' '+value+'?'
+        plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+plotting_df.drop(columns=["drinks","drugs","job","sex","education","last_online","status","most recent"],inplace=True)
+print(plotting_df.columns)
+print(plotting_df.head())
+```
+
+```{python}
+from sklearn.preprocessing import scale
+df1=plotting_df
+feature_list1=['age', 'height', 'income', 'in_edu', 'days since last seen',
+        'drinks socially?', 'drinks often?', 'drinks not at all?',
+       'drinks rarely?', 'drinks very often?', 'drinks desperately?',
+       'drugs never?', 'drugs sometimes?', 'drugs often?',
+       'job transportation?', 'job hospitality / travel?',
+       'job artistic / musical / writer?', 'job student?',
+       'job banking / financial / real estate?',
+       'job sales / marketing / biz dev?', 'job other?',
+       'job medicine / health?', 'job science / tech / engineering?',
+       'job executive / management?', 'job education / academia?',
+       'job clerical / administrative?', 'job computer / hardware / software?',
+       'job entertainment / media?', 'job rather not say?',
+       'job political / government?', 'job law / legal services?',
+       'job construction / craftsmanship?', 'job unemployed?', 'job military?',
+       'job retired?', 'sex m?', 'sex f?']
+data=df1[feature_list1]
+label=df1["is single"]
+scaled_data=scale(data,axis=0)
+```
+
+Here, I will build and train the model.
+
+```{python}
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
+scores=[]
+for k in list(range(1,20)):
+    classifier=KNeighborsClassifier(n_neighbors=k)
+    train_data,test_data,train_label,test_label=train_test_split(scaled_data,label,train_size=.8,test_size=.2,random_state=1)
+    classifier.fit(train_data,train_label)
+    print(str(k)+" || "+str(classifier.score(test_data,test_label)))
+    scores.append(classifier.score(test_data,test_label))
+plt.close("all")
+plt.plot(list(range(1,20)),scores)
+plt.show()
+```
+
+It looks like the efficacy of the model starts to taper at around k=11 to k=19. k=15 seems reasonable.
+Our R-squared is .93.
+
+## Conclusion:
+What I learned:
+1. We can predict whether someone is single with an accuracy of around .93.
+2. Learned the recommended ways of calling columns and the data inside them.
+
+This model can be augmented to predict other categorical features of OkCupid users.
+This model may be able to be improved by utilizing the data from user essays. NLP would be a good tool for this.
+

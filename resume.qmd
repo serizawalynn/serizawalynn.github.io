@@ -1,0 +1,62 @@
+---
+title: Resume
+---
+## Education
+### **New York University, College of Arts and Sciences**, New York, NY | May 2022
+Bachelor of Arts, Double Major in Mathematics and Philosophy, GPA: 3.5
+
+*Relevant Coursework: Linear and Nonlinear Optimization; Modeling and Simulation in Science, Engineering, and Economics; Probability and Statistics*
+
+## Technical Skills
+* **Coding Languages/Libraries:**
+    + Python, MATLAB, SQL, Scikit-Learn, Pandas, Seaborn, Matplotlib, Selenium
+* **Software:**
+    + MS Office, Microsoft Excel, Tableau, Jira
+* **Languages:**
+    + Intermediate Japanese
+* **Other Tools:**
+    + Jupyter Notebook
+
+## Projects
+### [*Convoy/Parade Traffic Simulation* (MATLAB, GitHub Version Control) | Dec 2021](matlab\convoy\convoy.qmd)
+* Coded a traffic simulation by conceptualizing a two-dimensional route as a one-dimensional line.
+* Simulated and recorded 6 possible scenarios a convoy or parade could encounter.
+* Presented the project to a 20-person class with an explanation of the model, code, and simulations of scenarios.
+
+### [*Dating App Profile Analysis Project* (Python, Jupyter Notebook) | Aug 2021](python\date-a-scientist\date-a-scientist.qmd)
+* Implemented data analysis and science skills learned through Codecademy’s Data Science Career Path.
+* Incorporated the Pandas library to clean >60,000 data points and Scikit-Learn to build and train a machine learning algorithm.
+* Model reached 93% accuracy in determining a user’s relationship status based on user profile information.
+
+## Experience
+### *Research Data Analyst*, **Immune Tolerance Network at UCSF**, San Francisco, CA | Feb 2023 - Present
+* Wrote >5 data cleaning scripts using Python’s Pandas library, generating datasets from sample management database systems. 
+* One script automatically fixed ~1,500 records, correcting ~75% of tube name errors, including those in transplant studies. 
+* Wrote a webscraper to collect shipping data from a courier that did not have a dedicated tracking information API.
+
+### *Lab Research Assistant*, **The Nusse Lab at Stanford University School of Medicine**, Stanford, CA | Jun 2018 - Aug 2018
+* Assisted investigators and researchers with data collection from laboratory experiments such as immunology staining experiments.
+* Analyzed >2,000 data points using statistical analysis to determine the significance of research findings.
+* Wrote a 19-page report using graphs and charts to visualize and explain results derived from experiments.
+
+### *Lab Research Assistant*, **The Barres Lab at Stanford University School of Medicine**, Stanford, CA | Jul 2016 - Aug 2017
+* Coded quantitative analysis script using MATLAB to calculate axon-to-myelin ratios from images of neurons. 
+* Prepared sagittal and coronal mice brain sections by operating a cryostat-microtome.
+* Acknowledged in a publication in [*Cell*](https://www.sciencedirect.com/science/article/pii/S0092867419309134#ack0010). 
+
+## Leadership Activities
+*President*, **Second Street Residence Hall Council (NYU)** | Sept 2018 - Jan 2019
+
+* Communicated residence hall concerns to Hall Council committee during weekly presentations.
+* Collaborated with Hall Council committee and residents to enhance residence hall experience through events.
+
+## Awards
+* **PixelPlex Bi-Annual STEM Scholarship** (Dec 2021)
+    + Essay Title: [*The Doctor is Always In: AI’s Possible Role in Mental Health*](https://pixelplex.io/scholarship/winners/essays/ai-powered-app-for-mental-health/)
+
+* **Dean's List for Academic Year** (Dec 2020)
+    + New York University
+
+## Certificates
+* **Data Scientist Career Path** (Sept 2021)
+    + Codecademy

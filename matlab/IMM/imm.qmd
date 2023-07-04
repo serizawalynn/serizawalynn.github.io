@@ -1,0 +1,34 @@
+---
+title: Code Written for MATH-UA 251 Introduction to Mathematical Modeling
+---
+Below are MATLAB scripts I wrote for a class at NYU I took called [MATH-UA 251 Introduction to Mathematical Modeling](https://math.nyu.edu/dynamic/courses/undergrad/math-ua-251/). My professor was Dr. Aref Hashemi.
+
+## Freezing Orange Emissivity
+
+This file graphs the temperature of fruit as it freezes despite the ambient air being above 0 degrees celsius. Below is an example:
+![](hw4.png)
+
+[Script that generates the graph above.](https://github.com/serizawalynn/Intro-to-Math-Modeling/blob/main/HW4.m)
+
+## Charged Particle Under Influence of Drag Force and Unidirectional Potential
+
+This file simulates the movement of a particle whose movement is affected by a drag force and a unidirectional potential. Two methods are compared: Euler's method and the perturbation method. Below is a graph that shows how the particle's velocity changes using the two different methods.
+![](hw7vis.jpg)
+
+[Script that plots the velocity of the particle using both the Euler's method and the perturbation method.](https://github.com/serizawalynn/Intro-to-Math-Modeling/blob/main/hw7code.m)
+
+## Pendulum Report
+
+The final project for this class was to simulate the movement of a pendulum on a string or a rod, with or without air resistance. 
+
+* [Write-up/Report.](IMM PROJ SERIZ.pdf)
+
+* [Code used to determine an appropriate timestep for the Forward Euler Method.](https://github.com/serizawalynn/Intro-to-Math-Modeling/blob/main/IMM_final_proj_CODE_timescale.m)
+
+* [Script that simulates the movement of a pendulum on a string without air resistance.](https://github.com/serizawalynn/Intro-to-Math-Modeling/blob/main/IMM_final_proj_CODE_A.m)
+
+* [Script that simulates the movement of a pendulum on a string with air resistance.](https://github.com/serizawalynn/Intro-to-Math-Modeling/blob/main/IMM_final_proj_CODE_B_1.m)
+
+* [Script that simulates the movement of a pendulum on a rod without air resistance.](https://github.com/serizawalynn/Intro-to-Math-Modeling/blob/main/IMM_final_proj_CODE_C.m)
+
+* [Script that simulates the movement of a pendulum on a rod with air resistance.](https://github.com/serizawalynn/Intro-to-Math-Modeling/blob/main/IMM_final_proj_CODE_D.m)

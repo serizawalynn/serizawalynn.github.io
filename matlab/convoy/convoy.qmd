@@ -1,0 +1,13 @@
+---
+title: Convoy/Parade Traffic Simulation
+---
+Summary:
+
+For this project, I worked with a partner to create a MATLAB script that can simulate how a convoy, parade, or any other situation where entities travel together in an organized fashion, changes based on their protocol (e.g., keep at least 100 meters between each vehicle) or environmental changes (e.g., turns, flat tire). 
+
+To model the path, we converted a two-dimensional map into a one-dimensional line. On our line, dots represent individuals (e.g., vehicle, parade float) and asterisks indicate places on the path where there are obstacles or events that might alter the progress of the convoy (e.g., turns, slowing down to take pictures (don't do this!)).
+
+Below is an example of what the script can produce. In this scenario, the convoy experiences potholes at the asterisks, and their protocol is to maintain a certain distance between vehicles. 
+{{< video https://www.youtube.com/watch?v=kqs439lCrmY >}}
+
+[Click here to get to the GitHub repo that has the script itself.](https://github.com/serizawalynn/SpecialTopics)

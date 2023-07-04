@@ -1,0 +1,14 @@
+---
+title: Simulation of Elastic Textile as System of Springs
+---
+
+Summary:
+
+This project aims to simulate an object falling onto a trampoline or fabric. The trampoline/fabric is modeled as a system of springs. Below is a video of the end result:
+{{< video https://youtu.be/MvHjKUm80A0 >}}
+
+[Click here for the report for the project.](Serizawa Proj1 Write-Up.pdf)
+
+[Click here to get to the GitHub repo that has the script itself.](https://github.com/serizawalynn/SpecialTopicsFirstProject/blob/main/betterproj1.m)
+
+[Click here for the presentation I made for the project, which I presented to the class.](modsimproj1.pptx)
