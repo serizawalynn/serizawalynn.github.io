@@ -1,9 +1,9 @@
 ---
 title: "About"
 image: profilepic.jpg
-about:
-    template: broadside
+
 ---
+![](profilepic.jpg){width=50%}
 
 Hello, and welcome to my portfolio website! My name is Lynn Serizawa, and I am thrilled to have the opportunity to introduce myself and showcase my work to you.
 
