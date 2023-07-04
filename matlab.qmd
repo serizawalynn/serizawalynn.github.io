@@ -5,6 +5,7 @@ execute:
 ---
 Note: This website is built using Quarto. The platform supports Python, R, Julia, and Observable Javascript. It does not support MATLAB at this time. One solution to incorporate MATLAB is to use the MATLAB kernel in Jupyter. However, I cannot use the kernel because Windows (the system I use) is not supported. Therefore, to run the scripts, please download them from the GitHub link, then run it on your installation of MATLAB.
 
+[Convoy/Parade Traffic Simulation](matlab\convoy\convoy.qmd)
 
 [Trampoline Simulation as a Network of Springs](matlab\SpecTopProj1\spec1.qmd)
 

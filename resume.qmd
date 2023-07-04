@@ -18,6 +18,15 @@ Bachelor of Arts, Double Major in Mathematics and Philosophy, GPA: 3.5
     + Jupyter Notebook
 
 ## Projects
+### [*Convoy/Parade Traffic Simulation* (MATLAB, GitHub Version Control) | Dec 2021](matlab\convoy\convoy.qmd)
+* Coded a traffic simulation by conceptualizing a two-dimensional route as a one-dimensional line.
+* Simulated and recorded 6 possible scenarios a convoy or parade could encounter.
+* Presented the project to a 20-person class with an explanation of the model, code, and simulations of scenarios.
+
+### [*Dating App Profile Analysis Project* (Python, Jupyter Notebook) | Aug 2021](python\date-a-scientist\date-a-scientist.qmd)
+* Implemented data analysis and science skills learned through Codecademy’s Data Science Career Path.
+* Incorporated the Pandas library to clean >60,000 data points and Scikit-Learn to build and train a machine learning algorithm.
+* Model reached 93% accuracy in determining a user’s relationship status based on user profile information.
 
 ## Experience
 ### *Research Data Analyst*, **Immune Tolerance Network at UCSF**, San Francisco, CA | Feb 2023 - Present

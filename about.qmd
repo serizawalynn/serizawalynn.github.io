@@ -2,10 +2,23 @@
 title: "About"
 image: profilepic.jpg
 about:
-    template: trestles
+    template: broadside
 ---
 
-Hey, my name is Lynn, and I am currently a research data analyst with the Immune Tolerance Network located in University of California, San Francisco. 
+Hello, and welcome to my portfolio website! My name is Lynn Serizawa, and I am thrilled to have the opportunity to introduce myself and showcase my work to you.
 
+I am currently a research data analyst with a passion for uncovering insights and hidden patterns to develop solutions to make healthcare more accessible, efficient, and accurate. I graduated from New York University (NYU) in May 2022, where I double majored in mathematics and philosophy. This unique combination of analytical thinking and critical reasoning has shaped my approach to data analysis and problem-solving.
+
+My journey into the world of data science began during the pandemic when I took a gap year. Eager to expand my knowledge and skills, I immersed myself in online resources to learn the fundamentals of data science. Upon returning to NYU to complete my senior year, I delved deeper into the field by taking classes such as Probability and Statistics and Linear and Nonlinear Optimization, solidifying my foundation in key data science concepts.
+
+Currently, I serve as a research data analyst at the Immune Tolerance Network at the University of California, San Francisco, where I contribute to various projects involving logistics and data cleaning and reporting. In this role, I have gained hands-on experience in manipulating and analyzing large datasets, implementing data cleaning scripts, and generating crucial reports to drive informed decision-making.
+
+Prior to my work at the Immune Tolerance Network, I honed my data analysis skills as a lab research assistant at the Nusse Lab at Stanford University. There, I conducted data analysis on data from experiments I ran, employing statistical techniques to extract meaningful results. Additionally, I worked in the Barres Lab at Stanford University, utilizing ImageJ and MATLAB to analyze neuron images and measure their axon-to-myelin ratio, further refining my expertise in image analysis.
+
+I am deeply passionate about the power of data and its potential to drive innovation and create positive change. I thrive in interdisciplinary environments, where I can collaborate with experts from diverse fields to tackle complex problems and unlock data-driven solutions.
+
+Throughout my career, I continuously seek opportunities to expand my knowledge and stay up to date with the latest advancements in data science. I am particularly interested in exploring machine learning, data visualization, and image analysis, as I believe these areas hold tremendous potential for innovation.
+
+Thank you for visiting my portfolio website, and I invite you to explore my projects. I am excited about the possibility of collaborating on future endeavors and leveraging the power of data to make a meaningful impact in the world.
 
 Feel free to contact me through [LinkedIn](https://www.linkedin.com/in/lynn-serizawa/)!

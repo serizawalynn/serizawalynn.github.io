@@ -2,7 +2,7 @@
 title: "Lynn Serizawa"
 image: profilepic.jpg
 about:
-    template: trestles
+    template: jolla
     links:
         - icon: linkedin
           text: LinkedIn
@@ -15,3 +15,5 @@ about:
           href: https://public.tableau.com/app/profile/lynn6821
 
 ---
+
+Hey! My name is Lynn, and I am currently a research data analyst with the Immune Tolerance Network located in University of California, San Francisco (UCSF). 
