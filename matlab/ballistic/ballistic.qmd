@@ -7,4 +7,4 @@ In this project, I created a script that calculates and draws the path a project
 
 ![](path.png)
 
-[Click here for the GitHub repository.]
+[Click here for the GitHub repository.](https://github.com/serizawalynn/MATHUA144)
