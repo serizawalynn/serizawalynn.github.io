@@ -1,0 +1,224 @@
+---
+title: 'Confirming Which Samples are in a Sample Tracking System, Participant Tracker, or a Biobank'
+jupyter: python3
+---
+
+This script checks whether samples in one data source are present in the other data sources. This script pulls data from a sample tracking system through an SQL connection, and reads two Excel spreadsheets. Each sheet has at least the following columns:
+
+- Participant
+- Visit Number
+- Visit Date
+
+The data for the purposes of demonstrating what the script does is included.
+
+
+Start by importing packages. Pandas will be used to read the spreadsheets, data from SQL queries, and create/manage dataframes that will be used to export a spreadsheet with the results. pyodbc will be used to access the SQL server. os will be used to find the files in the current directory (the spreadsheets from the participant tracker and biobank). calendar will be used to get a list of month names and abbreviations. It will also be used to limit the rows that result from the SQL query. This is because the spreadsheets are sent to us monthly, while the sample tracking system is essentially a real-time record. Without limiting the SQL query to the dates that the spreadsheets reflect, there would be many samples that are in the sample tracking system, but are not in the participant tracker or the biobank, simply due to the sources not being synced:
+
+```{python}
+# Import Packages
+import pandas as pd
+import pyodbc
+import os
+import calendar
+```
+
+We are comparing three data sources: our Specimen Tracking System, a BioBank, and an enrollment tracker. We can access the first source directly (i.e., we can pull information from it whenever we want). On the other hand, we are sent spreadsheets from the last two data sources at regular intervals. Once I receive these files, I place them in the same working directory as this script. However, I do not want to copy-paste the filename every time this script is run. The following finds the spreadsheet filenames by finding the strings "BCCHB" (the biobank) or "VisitEnrollmentData" in the filename:
+
+```{python}
+# Filenames for the biobank and visit enrollment sheets
+bbFN=""
+veFN=""
+fileList=os.listdir(os.getcwd()) # Get filenames for all files in the current working directory
+for k in fileList: # For each file in the list...
+    if "biobank" in k: # If this is in the filename...
+        bbFN=k # This is the biobank sheet filename
+    elif "VisitEnrollmentData" in k: # If this is in the filename...
+        veFN=k # This is the visit enrollment filename
+    else:
+        continue
+```
+
+Then, pandas reads the spreadsheets:
+
+```{python}
+# Read the sheets
+biobank=pd.read_excel(bbFN)
+visitenroll=pd.read_excel(veFN)
+```
+
+```{python}
+print(biobank)
+```
+
+```{python}
+print(visitenroll)
+```
+
+Since the spreadsheets are sent to us monthly, I need to know the latest date the sheets have records for. These dates are in the filename. I only need to get the date from one filename since they are sent to us at the same time. To do so, I will use the filename from the visit enrollment tracker. The tracker's filename comes in the following format:
+
+ITNXXXYY_VisitEnrollmentData_MMM DD_YYYY.xlsx
+
+Where X is the study number, Y is the study type, and M,D, and Y are month, day, and year, respectively. 
+
+To get this information, I remove characters that are not related to the date, then I convert the text representation of the date into an integer:
+
+```{python}
+# Extact date from the filename
+filename=veFN
+filename=filename.replace("demo_VisitEnrollmentData_","") # Remove this part
+filename=filename.replace(".xlsx","") # Remove this part
+filename=filename.replace("_"," ") # Turn every underscore into a space
+dateparts=filename.split() # Split the string into space
+if len(dateparts[0])>3: # Abbreviations are 3 chars long, so if its longer, then we need a dictionary with the full month names
+    mo2num={month: index for index, month in enumerate(calendar.month_name) if month}
+else: # If the abbreviation is less than or equal to 3 chars long, then we use the abbreviations
+    mo2num={month: index for index, month in enumerate(calendar.month_abbr) if month}
+dateparts[0]=str(mo2num[dateparts[0]]) # Turn the month name into an integer representation
+
+print(dateparts)
+```
+
+I will start with the visit enrollment sheet: I start by only selecting the relevant columns. Then, I create a column that combines the participant ID and visit number that we will use as a primary key. Lastly, a column is created that has the source of the data (e.g., visit enrollment sheet):
+
+```{python}
+### VISIT ENROLLMENT ###
+# Keep only the relevant columns
+visitenroll=visitenroll[["ParticipantID","Visit N"]]
+
+# Make a copy
+vepv=visitenroll.copy()
+
+# Turn the participant and Visit N columns into the string datatype
+vepv["ParticipantID"]=vepv["ParticipantID"].astype(str)
+vepv["Visit N"]=vepv["Visit N"].astype(str)
+
+# Create a column that combines the participant ID with the visit number
+vepv["PartVis"]=vepv["ParticipantID"]+"-"+vepv["Visit N"]
+
+# Make a column that shows the source of the rows
+vepv["Source"]="Visit Enrollment"
+
+print(vepv)
+```
+
+I do the same for the biobank file:
+
+```{python}
+### BIOBANK ###
+# Keep only the relevant columns
+biobank=biobank[["PPID","Event Label"]]
+
+# Make a copy
+bbpv=biobank.copy()
+
+# Create a function that give us the visit number from the format V##
+def visnum(eventlabel):
+    return eventlabel[1:]
+
+# Apply it to the biobank sheet so that we get the integer representation of the visit
+bbpv["visit"]=bbpv.apply(lambda x: visnum(x["Event Label"]),axis=1)
+
+# Turn the participant and visit columns into the string datatypes
+bbpv["PPID"]=bbpv["PPID"].astype(str)
+bbpv["visit"]=bbpv["visit"].astype(str)
+
+# Create a column that combines the participant ID with the visit number
+bbpv["PartVis"]=bbpv["PPID"]+"-"+bbpv["visit"]
+
+# Make a column that shows the source of the rows
+bbpv["Source"]="Biobank"
+
+print(bbpv)
+```
+
+For data from our specimen tracking system, I connect to it via an SQL connection. Then, by using the date I extracted from the filename, I filter out visits that happened after the most recent date the other data sources have data for (Note: To maintain privacy, I have ommitted and/or edited the connection string and query):
+
+```{python}
+### Sample Tracking System ###
+# Create a connection to SQL Server
+# cnxn = pyodbc.connect(YOUR CONNECTION STRING)
+
+# Make a query that gets all of the samples from visits for the study where the collection date is before the date on the sheets
+# query="SELECT Participant,visitnum FROM TABLENAME WHERE studynum=YOUR STUDY AND CollectionDate <= '{}-{}-{}'".format(dateparts[2],dateparts[0],dateparts[1])
+
+# Make a dataframe using the query and connection
+# lv=pd.read_sql(query,cnxn)
+
+# Close the connection
+# cnxn.close()
+
+# Read the Excel sheet
+lv=pd.read_excel("STS.xlsx")
+
+# Convert visitnum's dtype into str
+lv["visitnum"]=lv["visitnum"].astype(str)
+
+# Create a column that combines the participant ID with the visit number
+lv["PartVis"]=lv["Participant"]+"-"+lv["visitnum"]
+
+print(lv)
+```
+
+To start checking, I start by creating a list of unique participants in each data source. Then, I combine all of them into one list and remove duplicates by using the .set() method:
+
+```{python}
+### CROSS CHECK ###
+# Make a list of all of the unique participant-visit values for each source
+vepvList=list(vepv["PartVis"].unique())
+bbpvList=list(bbpv["PartVis"].unique())
+lvList=list(lv["PartVis"].unique())
+
+# Combine all of the lists of unique participant-visit values for each source
+allPV=vepvList+bbpvList+lvList
+
+# Remove redundant values from the list
+allPV=list(set(allPV))
+
+print(allPV)
+```
+
+The results will be outputted as a spreadsheet. To start, I will create an empty dataframe:
+
+```{python}
+# Create a dataframe that we will use to output a spreadsheet later. This sheet will contain the participant-visit values that was not found in one or two of the data sources
+mssgDF=pd.DataFrame(columns=['MSSG','Missing in','Participant','Visit'])
+
+print(mssgDF)
+```
+
+To compare the data sources, I loop through the list of unique participant-visit combos found in all data sources. Then, for each element, I check to make sure if it is in each data source. If it is not in a data source, I append a row to the output dataframe that has a message describing which participant-visit combo is missing from which data source, data source, participant, and visit:
+
+```{python}
+for i in allPV: # For each value in the list of unique participant-visit values
+    if i not in vepvList: # If its not in the enrollment-visit sheet...
+        # Create a string that has a message saying that the particular participant-visit value was not found in the data source
+        mssg="Participant-Visit {} was not found in the Visit Enrollment sheet.".format(str(i)) 
+        # Split the participant-visit value into their components
+        j=i.split('-')
+        # Append it to the output dataframe
+        mssgDF.loc[len(mssgDF)]=[mssg,"Visit Enrollment",j[0],j[1]]
+    if i not in bbpvList: # If its not in the biobank sheet...
+        # Create a string that has a message saying that the particular participant-visit value was not found in the data source
+        mssg="Participant-Visit {} was not found in the BioBank sheet.".format(str(i))
+        # Split the participant-visit value into their components
+        j=i.split('-')
+        # Append it to the output dataframe
+        mssgDF.loc[len(mssgDF)]=[mssg,"BioBank",j[0],j[1]]
+    if i not in lvList: # If its not in the LabVantage...
+        # Create a string that has a message saying that the particular participant-visit value was not found in the data source
+        mssg="Participant-Visit {} was not found in LV.".format(str(i))
+        # Split the participant-visit value into their components
+        j=i.split('-')
+        # Append it to the output dataframe
+        mssgDF.loc[len(mssgDF)]=[mssg,"LabVantage",j[0],j[1]]
+
+print(mssgDF)
+```
+
+Output the result as an Excel spreadsheet:
+
+```{python}
+# Output the dataframe as an xlsx file
+mssgDF.to_excel('resultDemo.xlsx',index=False)
+```
+

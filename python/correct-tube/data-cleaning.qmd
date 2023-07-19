@@ -1,0 +1,130 @@
+---
+title: 'Data Cleaning: Incorrect Tube Names'
+jupyter: python3
+---
+
+
+
+This script automatically cleans the names of several tube names. The script takes in a spreadsheet as an input that has at least the following columns:
+* "Study Number"
+* "ISISS Registration Number"
+* "ITN Barcode"
+* "Tube Type"
+
+Start by importing libraries. I will import pandas to read and manage data extracted from Excel spreadsheets. Datetime will be used to generate the date this script is run to keep track of data change requests.
+
+```{python}
+import pandas as pd
+from datetime import datetime
+```
+
+I will start with getting today's date. I need to get the date in a string format because data change requests need this information in the first column:
+
+```{python}
+today=datetime.now() # Gets today's date
+year=str(today.year) # Get the year as a string
+year=year[-2:]  # Get the last 2 digits (2023 -> 23)
+date=str(today.month)+'.'+str(today.day)+'.'+str(year) # Get today's date in MM-DD-YY format
+
+print(date)
+```
+
+Have pandas read the spreadsheet:
+
+```{python}
+flag=pd.read_excel("dataDemo.xlsx")
+
+print(flag)
+```
+
+Get a list of columns from the spreadsheet. Insert a new column called "New Tube Type" after the pre-existing "Tube Type" column:
+
+```{python}
+column_list=list(flag.columns)
+flag.insert(loc=(column_list.index("Tube Type")+1),column="New Tube Type",value=None)
+```
+
+Create a function that maps incorrect tube names to correct ones. I am not using a dictionary since there are many incorrect tube names for one correct tube name. Furthermore, I believe that it is easier to edit the function. A new user would have an easier time understanding what the function does:
+
+```{python}
+def cleaning(old):
+    if old in ['0.5  ML CRYOVIAL','0.5mL Cryovial']: # If the current tube name is one of these...
+        return '0.5 ML CRYOVIAL' # Return this name
+    elif (old == '1.2 mL Cryovial'): # Otherwise, if the current tube name is this...
+        return '01.2 ML CRYOVIAL' # Return this name
+    elif (old == '1.5ml cryovial'):
+        return '01.5 ML CRYOVIAL'
+    elif old in ['1.8ml cryovial','01.8ml cryovial','1.8 mL cryovial','1.8mL','1.8mL Cryovial',"4'' 1.8 ml cryovial","1.8 mL cryovial"]:
+        return '01.8 ML CRYOVIAL'
+    elif old in ['02.0 ML CRYOVIAL','02.0mL Cryovial','02mL Cryovial','2ml cryovial',"2mL Cryovial"]:
+        return '02 ML CRYOVIAL'
+    elif old == '2.5 ml cryovial':
+        return '02.5 ML CRYOVIAL'
+    elif old in ['03mL Tempus',"03mL Tempus"]:
+        return '03 ML TEMPUS'
+    elif old == '5ml EDTA':
+        return '05 ML K3 EDTA'
+    elif old in ['15 ml cryovial tube',"15ML CRYOVIAL"]:
+        return '15 ML CRYOVIAL'
+    elif old == '22 oz Commode':
+        return '22 OZ COMMODE CONTAINER'
+    elif old in ['35 ml Storage','35 ml Storage Container']:
+        return '35 ML STORAGE BOTTLE'
+    elif old == 'RNA DNA Shield':
+        return 'DNA RNA Shield'
+    else:
+        return None
+```
+
+Apply the function:
+
+```{python}
+flag["New Tube Type"]=flag["Tube Type"].apply(cleaning)
+
+print(flag)
+```
+
+I still need to clean the spreadsheet. A data change request is submitted when there is new information. Therefore, NaNs have to be removed since they cannot be used for data change requests:
+
+```{python}
+flag=flag[flag["New Tube Type"].notna()]
+```
+
+A Data Change Request Number is needed to submit a data change request. The value is the same for all columns. It is a string in the format {Study number} - MM-DD-YY - Initials. The code below accomplishes this task:
+
+```{python}
+flag["Data Change Request Number"]=flag["Study Number"]+" - "+date+" - LS"
+```
+
+A "change number" is needed for each row. This just shows the first, second, third, ... , and nth data change to be made. An easy way to do this is to reset the index, then create a column that is the index + 1:
+
+```{python}
+flag.reset_index(inplace=True)
+flag["Index"]=flag.index
+flag["Change Number"]=flag["Index"]+1
+```
+
+To submit the data change request, only the following columns from the dataframe are needed:
+- Data Change Request Number
+- Change Number
+- ISISS Registration Number
+- ITN Barcode
+- Tube Type
+- New Tube Type
+
+Thus, I will only select these columns from the dataframe. Lastly, a justification column is needed. I will assign a string value to a "Justification" column. 
+
+```{python}
+# Select columns
+flag=flag[["Data Change Request Number","Change Number","ISISS Registration Number","ITN Barcode","Tube Type","New Tube Type"]]
+
+# Create the justification column
+flag["Justification"]='''reconciling data entry inconsistencies'''
+```
+
+Export the dataframe as an Excel spreadsheet. This will be emailed to a group that handles data changes:
+
+```{python}
+flag.to_excel("Data Change Request Demo.xlsx",index=False)
+```
+
