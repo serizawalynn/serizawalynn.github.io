@@ -3,4 +3,8 @@ title: "Python Projects"
 ---
 Here are my Python projects:
 
+[Checking Samples Between Three Data Sources](python\832-check\compare-dsource.qmd)
+
+[Correcting Tube Names](python\correct-tube\data-cleaning.qmd)
+
 [Date-a-scientist](python\date-a-scientist\date-a-scientist.qmd)

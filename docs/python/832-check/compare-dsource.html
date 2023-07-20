@@ -374,7 +374,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(allPV)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['Bravo-1', 'Alpha-1', 'Alpha-2', 'Charlie-3', 'Bravo-2', 'Charlie-4', 'Charlie-5']</code></pre>
+<pre><code>['Charlie-4', 'Alpha-1', 'Charlie-3', 'Alpha-2', 'Bravo-2', 'Bravo-1', 'Charlie-5']</code></pre>
 </div>
 </div>
 <p>The results will be outputted as a spreadsheet. To start, I will create an empty dataframe:</p>
@@ -417,24 +417,24 @@ Index: []</code></pre>
 <span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mssgDF)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                                MSSG        Missing in   
-0  Participant-Visit Bravo-1 was not found in the...           BioBank  \
-1     Participant-Visit Alpha-2 was not found in LV.        LabVantage   
+0  Participant-Visit Charlie-4 was not found in t...  Visit Enrollment  \
+1   Participant-Visit Charlie-4 was not found in LV.        LabVantage   
 2  Participant-Visit Charlie-3 was not found in t...           BioBank   
 3   Participant-Visit Charlie-3 was not found in LV.        LabVantage   
-4  Participant-Visit Bravo-2 was not found in the...  Visit Enrollment   
-5  Participant-Visit Charlie-4 was not found in t...  Visit Enrollment   
-6   Participant-Visit Charlie-4 was not found in LV.        LabVantage   
+4     Participant-Visit Alpha-2 was not found in LV.        LabVantage   
+5  Participant-Visit Bravo-2 was not found in the...  Visit Enrollment   
+6  Participant-Visit Bravo-1 was not found in the...           BioBank   
 7  Participant-Visit Charlie-5 was not found in t...  Visit Enrollment   
 8  Participant-Visit Charlie-5 was not found in t...           BioBank   
 
   Participant Visit  
-0       Bravo     1  
-1       Alpha     2  
+0     Charlie     4  
+1     Charlie     4  
 2     Charlie     3  
 3     Charlie     3  
-4       Bravo     2  
-5     Charlie     4  
-6     Charlie     4  
+4       Alpha     2  
+5       Bravo     2  
+6       Bravo     1  
 7     Charlie     5  
 8     Charlie     5  </code></pre>
 </div>
