@@ -2,6 +2,8 @@
 title: 'Confirming Which Samples are in a Sample Tracking System, Participant Tracker, or a Biobank'
 jupyter: python3
 ---
+This script was made during my time at the Immune Tolerance Network at the University of California, San Francisco.
+
 
 This script checks whether samples in one data source are present in the other data sources. This script pulls data from a sample tracking system through an SQL connection, and reads two Excel spreadsheets. Each sheet has at least the following columns:
 
