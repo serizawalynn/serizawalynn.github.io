@@ -4,6 +4,8 @@ jupyter: python3
 ---
 
 
+This script was made during my time at the Immune Tolerance Network at the University of California, San Francisco.
+
 
 This script automatically cleans the names of several tube names. The script takes in a spreadsheet as an input that has at least the following columns:
 
