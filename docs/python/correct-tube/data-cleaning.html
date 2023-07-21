@@ -185,7 +185,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>This script automatically cleans the names of several tube names. The script takes in a spreadsheet as an input that has at least the following columns: * “Study Number” * “ISISS Registration Number” * “ITN Barcode” * “Tube Type”</p>
+<p>This script was written during my time at the Immune Tolerance Network at UCSF.</p>
+<p>This script automatically cleans the names of several tube names. The script takes in a spreadsheet as an input that has at least the following columns:</p>
+<ul>
+<li>“Study Number”</li>
+<li>“ISISS Registration Number”</li>
+<li>“ITN Barcode”</li>
+<li>“Tube Type”</li>
+</ul>
 <p>Start by importing libraries. I will import pandas to read and manage data extracted from Excel spreadsheets. Datetime will be used to generate the date this script is run to keep track of data change requests.</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -200,7 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>7.19.23</code></pre>
+<pre><code>7.21.23</code></pre>
 </div>
 </div>
 <p>Have pandas read the spreadsheet:</p>

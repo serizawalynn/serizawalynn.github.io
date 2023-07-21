@@ -422,7 +422,7 @@ dtype: object</code></pre>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plotting_df<span class="op">=</span>df[feature_list]</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plotting_df.dropna(how<span class="op">=</span><span class="st">"any"</span>,inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\User\AppData\Local\Temp\ipykernel_29652\2607736166.py:3: SettingWithCopyWarning: 
+<pre><code>C:\Users\User\AppData\Local\Temp\ipykernel_41136\2607736166.py:3: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
@@ -690,7 +690,7 @@ Name: count, dtype: int64</code></pre>
 <span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unspec_count)</span>
 <span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unspec_count<span class="op">/</span>(spec_count<span class="op">+</span>unspec_count))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\User\AppData\Local\Temp\ipykernel_29652\1761148565.py:1: SettingWithCopyWarning: 
+<pre><code>C:\Users\User\AppData\Local\Temp\ipykernel_41136\1761148565.py:1: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
@@ -731,7 +731,7 @@ Name: count, dtype: int64
 <div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plotting_df.loc[:,<span class="st">'in_edu'</span>]<span class="op">=</span>plotting_df.loc[:,<span class="st">'education'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">0</span> <span class="cf">if</span> <span class="st">"graduated"</span> <span class="kw">in</span> x <span class="kw">or</span> <span class="st">"dropped out"</span> <span class="kw">in</span> x <span class="cf">else</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\User\AppData\Local\Temp\ipykernel_29652\463722713.py:1: SettingWithCopyWarning: 
+<pre><code>C:\Users\User\AppData\Local\Temp\ipykernel_41136\463722713.py:1: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
@@ -790,7 +790,7 @@ Name: count, dtype: int64</code></pre>
 <div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>plotting_df.loc[:,<span class="st">'status'</span>].drop(plotting_df[plotting_df.loc[:,<span class="st">'status'</span>]<span class="op">==</span><span class="st">'unknown'</span>].index,inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\User\AppData\Local\Temp\ipykernel_29652\701518949.py:1: SettingWithCopyWarning: 
+<pre><code>C:\Users\User\AppData\Local\Temp\ipykernel_41136\701518949.py:1: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
@@ -827,13 +827,13 @@ Name: last_online, Length: 35902, dtype: object&gt;</code></pre>
 <span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>plotting_df.loc[:,<span class="st">"days since last seen"</span>]<span class="op">=</span>plotting_df.loc[:,<span class="st">"days since last seen"</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x:x.days)</span>
 <span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(plotting_df.loc[:,<span class="st">"days since last seen"</span>].sort_values(ascending<span class="op">=</span><span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\User\AppData\Local\Temp\ipykernel_29652\3662312634.py:4: SettingWithCopyWarning: 
+<pre><code>C:\Users\User\AppData\Local\Temp\ipykernel_41136\3662312634.py:4: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   plotting_df.loc[:,"most recent"]=plotting_df.loc[:,"last_online"].sort_values(ascending=False).iloc[0]
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3662312634.py:6: SettingWithCopyWarning: 
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3662312634.py:6: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
@@ -923,211 +923,6 @@ Name: days since last seen, Length: 35902, dtype: int64</code></pre>
 <span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>plotting_df.drop(columns<span class="op">=</span>[<span class="st">"drinks"</span>,<span class="st">"drugs"</span>,<span class="st">"job"</span>,<span class="st">"sex"</span>,<span class="st">"education"</span>,<span class="st">"last_online"</span>,<span class="st">"status"</span>,<span class="st">"most recent"</span>],inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(plotting_df.columns)</span>
 <span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(plotting_df.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:1: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,"is single"]=np.where(plotting_df.loc[:,"status"]=='single',1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:7: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
-C:\Users\User\AppData\Local\Temp\ipykernel_29652\3404684793.py:8: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  plotting_df.drop(columns=["drinks","drugs","job","sex","education","last_online","status","most recent"],inplace=True)</code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Index(['age', 'height', 'income', 'in_edu', 'days since last seen',
        'is single', 'drinks socially?', 'drinks often?', 'drinks not at all?',
@@ -1188,6 +983,211 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 9             0       1       0  
 
 [5 rows x 38 columns]</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:1: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,"is single"]=np.where(plotting_df.loc[:,"status"]=='single',1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.loc[:,new_col_name]=np.where(plotting_df.loc[:,column]==value,1,0)
+C:\Users\User\AppData\Local\Temp\ipykernel_41136\3404684793.py:8: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  plotting_df.drop(columns=["drinks","drugs","job","sex","education","last_online","status","most recent"],inplace=True)</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="20">
